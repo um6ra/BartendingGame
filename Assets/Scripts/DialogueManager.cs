@@ -25,6 +25,7 @@ public class DialogueManager : MonoBehaviour
     {
         // Split the input string into lines
         string[] lines = _reply.Split('\n');
+        string objectName = "";
 
         // Loop through each line
         foreach (string line in lines)
@@ -35,17 +36,19 @@ public class DialogueManager : MonoBehaviour
             // Ensure the line contains object name and RGB values
             if (parts.Length >= 4)
             {
-                string objectName = parts[0];
 
                 // Retrieve RGB values from string parts
                 int r, g, b;
-                if (int.TryParse(RemoveNonDigits(parts[1]), out r) &&
-                    int.TryParse(RemoveNonDigits(parts[2]), out g) &&
-                    int.TryParse(RemoveNonDigits(parts[3]), out b))
+                if (int.TryParse(RemoveNonDigits(parts[parts.Length - 3]), out r) &&
+                    int.TryParse(RemoveNonDigits(parts[parts.Length - 2]), out g) &&
+                    int.TryParse(RemoveNonDigits(parts[parts.Length - 1]), out b))
                 {
                     // Create Color object from RGB values
                     Color color = new Color(r / 255f, g / 255f, b / 255f);
-                
+
+                    objectName = string.Join(" ", parts, 0, parts.Length - 3);
+
+
                     OBjectName = objectName;
                     ObjectColor = color;
                 
