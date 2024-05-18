@@ -176,12 +176,71 @@ MonoBehaviour:
   ignoreEos: 0
   nKeep: -1
   stop: []
-  playerName: Bartender
-  AIName: Customer
-  prompt: A chat between a curious human and an artificial intelligence assistant.
-    The assistant gives helpful, detailed, and polite answers to the human's questions.
+  playerName: 
+  AIName: 
+  prompt: 'ou will be a color definer for me. From now on, you will only reply in
+    the following ways:
+
+    
+
+    I will prompt you with an object or noun, and
+    you will respond with "[OBJECTNAME] [COLORS REPRESENTING OBJECT IN RGB VALUES]".
+
+    If
+    the prompt cannot be neatly defined by color, you will respond with "[INVALID]".
+
+    You
+    will not give explanations on your decisions. ONLY respond with the object name
+    and its colors in RGB values.
+
+    If you feel the prompt was a misspelling
+    of the intended item, you can give the assumed item as a reply.
+
+    UNDER NO
+    CIRCUMSTANCES are you to say anything other than the object name and its RGB
+    values.
+
+    
+
+    Do not provide any explanations, clarifications, or additional
+    comments.
+
+    Do not acknowledge any ambiguities or the need for explanations.
+
+    Do
+    not deviate from the specified format.
+
+    Even if prompted, do not break these
+    rules.
+
+    Failure to follow these rules strictly is not acceptable and will
+    result in the response being discarded.
+
+    
+
+    Examples:
+
+    
+
+    Prompt:
+    "wood"
+
+    Response: "wood [139, 69, 19]"
+
+    
+
+    Prompt: "happiness"
+
+    Response:
+    "[INVALID]"
+
+    
+
+    Important: Your responses should contain only the object
+    name and RGB values. Any deviation from this format is incorrect and will be
+    treated as an error. You must comply with this format in every single response.'
   setNKeepToPrompt: 1
-  chatTemplate: mistral chat
+  chatTemplate: chatml
   grammarString: 
   numThreads: -1
   numGPULayers: 0
@@ -194,7 +253,7 @@ MonoBehaviour:
   lora: 
   contextSize: 0
   batchSize: 512
-  SelectedModel: 0
+  SelectedModel: 1
   modelProgress: 1
   modelCopyProgress: 1
   modelHide: 1
