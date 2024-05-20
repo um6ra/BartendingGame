@@ -38,7 +38,7 @@ public class DialogueManager : MonoBehaviour
             {
 
                 // Retrieve RGB values from string parts
-                int r, g, b;
+                int r, g, b;    
                 if (int.TryParse(RemoveNonDigits(parts[parts.Length - 3]), out r) &&
                     int.TryParse(RemoveNonDigits(parts[parts.Length - 2]), out g) &&
                     int.TryParse(RemoveNonDigits(parts[parts.Length - 1]), out b))
