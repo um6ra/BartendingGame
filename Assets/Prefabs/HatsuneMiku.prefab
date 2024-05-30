@@ -1148,7 +1148,7 @@ MonoBehaviour:
   advancedOptions: 1
   expertOptions: 0
   host: localhost
-  port: 13333
+  port: 12222
   stream: 1
   grammar: 
   seed: 6
@@ -1180,7 +1180,7 @@ MonoBehaviour:
     and ask for a drink. You are free to add any details, about yourself, the occasion,
     your mood or whatever, to help me as a bartender. '
   setNKeepToPrompt: 1
-  chatTemplate: mistral chat
+  chatTemplate: chatml
   grammarString: 
 --- !u!114 &7934938965004642674
 MonoBehaviour:

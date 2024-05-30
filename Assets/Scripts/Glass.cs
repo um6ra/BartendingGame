@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 public class Glass : MonoBehaviour
 {
-    public float maxCapacity = 100f;  // Maximum capacity of the glass
+    public float maxMilliliters = 200f;  // Maximum capacity of the glass
     public float pourRate = 10f;  // Amount of liquid added per second when pouring
     public Transform liquidTransform;  // Transform of the liquid object
     public Renderer liquidRenderer;  // Renderer of the liquid object
@@ -12,8 +13,10 @@ public class Glass : MonoBehaviour
     public Vector3 liquidInitialScale;  // Initial scale of the liquid object
     public Vector3 liquidInitialPosition;  // Initial position of the liquid object
 
-    private Dictionary<string, float> liquidAmounts = new Dictionary<string, float>();
+    private Dictionary<string, (float Amount, string Name)> liquidAmounts = new Dictionary<string, (float, string)>();
     private float totalLiquidAmount = 0f;
+
+    private Tuple<float, string> _drinkData = new Tuple<float, string>(0.0f, ""); 
 
     private void Start()
     {
@@ -33,17 +36,22 @@ public class Glass : MonoBehaviour
             ParticleSystem particleSystem = other.GetComponent<ParticleSystem>();
             Color particleColor = particleSystem.main.startColor.color;
 
+            LiquorBottle drink = other.GetComponentInParent<LiquorBottle>();
+
             // Use the color as a key to track different liquids
             string colorKey = ColorUtility.ToHtmlStringRGBA(particleColor);
+
+            // this color hasn't been poured
             if (!liquidAmounts.ContainsKey(colorKey))
             {
-                liquidAmounts[colorKey] = 0f;
+                string ingName = drink.IngredientName;
+                liquidAmounts[colorKey] = (0f, ingName);
             }
 
             // Increase the amount of the corresponding liquid
-            liquidAmounts[colorKey] += pourRate * Time.deltaTime;
+            liquidAmounts[colorKey] = (liquidAmounts[colorKey].Amount + pourRate * Time.deltaTime, liquidAmounts[colorKey].Name);
             totalLiquidAmount += pourRate * Time.deltaTime;
-            totalLiquidAmount = Mathf.Clamp(totalLiquidAmount, 0, maxCapacity);
+            totalLiquidAmount = Mathf.Clamp(totalLiquidAmount, 0, maxMilliliters);
 
             // Update the UI Text if assigned
             if (liquidAmountText != null)
@@ -59,7 +67,7 @@ public class Glass : MonoBehaviour
     private void UpdateLiquidVisuals()
     {
         // Calculate the fill amount as a percentage
-        float fillAmount = totalLiquidAmount / maxCapacity;
+        float fillAmount = totalLiquidAmount / maxMilliliters;
 
         // Scale the liquid object based on the fill amount
         liquidTransform.localScale = new Vector3(
@@ -81,7 +89,7 @@ public class Glass : MonoBehaviour
         {
             Color color;
             ColorUtility.TryParseHtmlString("#" + entry.Key, out color);
-            blendedColor += color * (entry.Value / totalLiquidAmount);
+            blendedColor += color * (entry.Value.Amount / totalLiquidAmount);
         }
 
         // Update the color of the liquid
@@ -93,4 +101,22 @@ public class Glass : MonoBehaviour
         // This method can be used to set the color of the liquid dynamically if needed
         UpdateLiquidVisuals();
     }
+
+    public string[] GetIngredientsAndAmounts()
+    {
+        if (liquidAmounts.Count == 0)
+        {
+            return null;
+        }
+
+        string[] strings = new string[liquidAmounts.Count];
+        int i = 0;
+
+        foreach (var entry in liquidAmounts)
+        {
+            strings[i] = entry.Value.Name + ": " + entry.Value.Amount + "ml";
+        }
+
+        return strings;
+    } 
 }

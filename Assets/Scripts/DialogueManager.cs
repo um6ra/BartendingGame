@@ -15,6 +15,11 @@ public class DialogueManager : MonoBehaviour
     public string OBjectName;
     public Color ObjectColor;
 
+    private void Start()
+    {
+        llm.Warmup();
+    }
+
     void HandleReply(string reply)
     {
         replyBox.text = reply;

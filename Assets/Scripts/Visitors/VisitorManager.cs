@@ -35,12 +35,12 @@ public class VisitorManager : MonoBehaviour
         nextVisitor = SpawnVisitor(false);
     }
     
-    public void OnDrinkServed()
+    public void OnDrinkServed(Glass drink)
     {
         Visitor visitorScript = currentVisitor.GetComponent<Visitor>();
         if (visitorScript != null)
         {
-            visitorScript.SpeakAboutDrink();
+            visitorScript.SpeakAboutDrink(drink);
         }
         else
         {

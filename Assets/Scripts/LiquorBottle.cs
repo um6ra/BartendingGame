@@ -10,12 +10,19 @@ public class LiquorBottle : MonoBehaviour
     public float rotationSpeed = 100f;
     public float pourAngleThreshold = 30f;  // Angle threshold to start pouring
     public float maxRotationAngle = 90f;  // Maximum rotation angle to the right
+
+    // Drink Ingredient Name
+    private string _ingredientName = "pineapple Juice";
+    public string IngredientName { get => _ingredientName; }
+
+
     private bool isInForeground = false;
     private bool isPouring = false;
     private Quaternion initialRotation;
     private float currentRotationAngle = 0f;
     private Vector3 offset;
     private Camera mainCamera;
+
 
     private void Start()
     {
@@ -111,6 +118,7 @@ public class LiquorBottle : MonoBehaviour
     
     public void SetNameField(string newName)
     {
-        input.text = newName;
+        _ingredientName = newName;
+        input.text = _ingredientName;
     }
 }
