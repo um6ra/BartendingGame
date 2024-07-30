@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using LLMUnity;
 using System;
+using UnityEngine;
 
-public class DialogueManager : MonoBehaviour 
+public class BottleDialogueManager : MonoBehaviour 
 {
     public LLM llm;
     public TMPro.TMP_InputField input;
@@ -12,8 +10,10 @@ public class DialogueManager : MonoBehaviour
 
     private string _reply;
 
-    public string OBjectName;
-    public Color ObjectColor;
+    [SerializeField] string _objectName;
+    [SerializeField] Color _objectColor;
+
+    [SerializeField] LiquorBottle _liquorBottle;
 
     private void Start()
     {
@@ -27,6 +27,12 @@ public class DialogueManager : MonoBehaviour
     }
 
     void CompleteReply()
+    {
+       CreateBottleSplitter();
+        BottleInstantiation();
+    }
+
+    private void CreateBottleSplitter()
     {
         // Split the input string into lines
         string[] lines = _reply.Split('\n');
@@ -43,7 +49,7 @@ public class DialogueManager : MonoBehaviour
             {
 
                 // Retrieve RGB values from string parts
-                int r, g, b;    
+                int r, g, b;
                 if (int.TryParse(RemoveNonDigits(parts[parts.Length - 3]), out r) &&
                     int.TryParse(RemoveNonDigits(parts[parts.Length - 2]), out g) &&
                     int.TryParse(RemoveNonDigits(parts[parts.Length - 1]), out b))
@@ -54,9 +60,9 @@ public class DialogueManager : MonoBehaviour
                     objectName = string.Join(" ", parts, 0, parts.Length - 3);
 
 
-                    OBjectName = objectName;
-                    ObjectColor = color;
-                
+                    _objectName = objectName;
+                    _objectColor = color;
+
                 }
                 else
                 {
@@ -68,7 +74,16 @@ public class DialogueManager : MonoBehaviour
                 Debug.LogWarning("Invalid input format: " + line);
             }
         }
-        }
+    }
+
+    private void BottleInstantiation()
+    {
+       LiquorBottle bottle = Instantiate(_liquorBottle);
+        bottle.transform.position = new Vector3(4, 4, 4);
+       bottle.SetParticleColor(_objectColor);
+        bottle.SetNameField(_objectName);
+        bottle.name = _objectName;
+    }
 
     public void OnMessageWritten()
     {

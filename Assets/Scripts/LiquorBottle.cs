@@ -23,7 +23,6 @@ public class LiquorBottle : MonoBehaviour
     private Vector3 offset;
     private Camera mainCamera;
 
-
     private void Start()
     {
         // Store the initial rotation
@@ -43,16 +42,16 @@ public class LiquorBottle : MonoBehaviour
     private void OnMouseDown()
     {
         // Move to the foreground position
-        transform.position = foregroundPosition;
+        transform.position = new Vector3(transform.position.x, transform.position.y, foregroundPosition.z);
         isInForeground = true;
         // Calculate offset
-        offset = transform.position - GetMouseWorldPos();
+        //offset = transform.position - GetMouseWorldPos();
     }
 
     private void OnMouseUp()
     {
         // Move back to the background position
-        transform.position = backgroundPosition;
+        transform.position = new Vector3(transform.position.x, transform.position.y, backgroundPosition.z); ;
         transform.rotation = initialRotation;  // Reset rotation
         isInForeground = false;
         isPouring = false;
