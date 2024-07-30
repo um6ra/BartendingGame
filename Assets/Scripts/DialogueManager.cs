@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
 
     private string _reply;
 
-    public string OBjectName;
+    public string ObjectName;
     public Color ObjectColor;
 
     private void Start()
@@ -54,7 +54,7 @@ public class DialogueManager : MonoBehaviour
                     objectName = string.Join(" ", parts, 0, parts.Length - 3);
 
 
-                    OBjectName = objectName;
+                    ObjectName = objectName;
                     ObjectColor = color;
                 
                 }

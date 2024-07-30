@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using LLMUnity;
 using System.Text;
+using UnityEngine.UIElements;
 
 public class Visitor : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Visitor : MonoBehaviour
     public TMPro.TMP_InputField inputField;
     
     [SerializeField] Canvas _canvas;
+    [SerializeField] GameObject _continueButton;
     
     // Start is called before the first frame update
     void Start()
@@ -67,7 +69,7 @@ public class Visitor : MonoBehaviour
 
     public void SpawnContinueButton()
     {
-        
+        _continueButton.gameObject.SetActive(true);
     }
     public void FinishTalking()
     {

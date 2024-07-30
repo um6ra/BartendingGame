@@ -22,6 +22,6 @@ public class ScuffedBottleChanger : MonoBehaviour
     public void ChangeColorAndName()
     {
         liquorBottle.SetParticleColor(dialogueManager.ObjectColor);
-        liquorBottle.SetNameField(dialogueManager.OBjectName);
+        liquorBottle.SetNameField(dialogueManager.ObjectName);
     }
 }
