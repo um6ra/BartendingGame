@@ -243,7 +243,7 @@ MonoBehaviour:
   chatTemplate: llama3 chat
   grammarString: 
   numThreads: -1
-  numGPULayers: 0
+  numGPULayers: 25
   parallelPrompts: -1
   debug: 0
   asynchronousStartup: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
   replyBox: {fileID: 306111523}
   _objectName: 
   _objectColor: {r: 0, g: 0, b: 0, a: 0}
-  _liquorBottle: {fileID: 2085685911805741873, guid: 557c8d417d9737b43be58c015d656f6a, type: 3}
+  _liquorBottle: {fileID: 7827908037753356629, guid: c896b78a5f097fb4fa38238faad7b04b, type: 3}
 --- !u!4 &451048556
 Transform:
   m_ObjectHideFlags: 0
