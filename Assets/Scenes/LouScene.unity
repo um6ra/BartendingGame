@@ -1197,7 +1197,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visitorPrefabs:
   - {fileID: 8897567872410229930, guid: ee2be7b1557b03542a85dbfba0456f88, type: 3}
-  - {fileID: 8897567872410229930, guid: e751ad74eb96dce449024d13464de5d5, type: 3}
 --- !u!1 &508345462
 GameObject:
   m_ObjectHideFlags: 0

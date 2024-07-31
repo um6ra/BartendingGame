@@ -4,6 +4,7 @@ using UnityEngine;
 using LLMUnity;
 using System.Text;
 using UnityEngine.UIElements;
+using System.Text.RegularExpressions;
 
 public class Visitor : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Visitor : MonoBehaviour
     
     [SerializeField] Canvas _canvas;
     [SerializeField] GameObject _continueButton;
+ 
     
     // Start is called before the first frame update
     void Start()
@@ -61,15 +63,46 @@ public class Visitor : MonoBehaviour
             ingredientsString.Append(ingredients[i]);
         }
 
-        string finalString = "(You will now rate the following drink I am serving you. Be brutally honest and include a rating from 1 to 10. YOU HAVE TO INCLUDE THE RATING. Write it in the following format X/10.) Here is your drink!:" +
+        string finalString = "(You will now rate the following drink I am serving you. Be brutally honest and include a rating from 1 to 10. YOU HAVE TO INCLUDE THE RATING. Write it in the following format X/10. Here is your drink!:" +
                  ingredientsString.ToString();
-
+        
        _ = llm.Chat(finalString, DisplayReply, SpawnContinueButton);
     }
 
+    
+    private int ExtractRating(string response)
+    {
+        Regex regex = new Regex(@"\b(\d+)/10\b");
+        Match match = regex.Match(response);
+        if (match.Success)
+        {
+            return int.Parse(match.Groups[1].Value);
+        }
+        else
+        {
+            return -1; // Return -1 if extraction fails
+        }
+    }
+    
+    public void AddRatingToScore(string ratingResponse)
+    {
+        int rating = ExtractRating(ratingResponse);
+        if (rating >= 0) // Ensure the rating is valid
+        {
+            ScoreSystem.Instance.score += rating;
+            
+        }
+        else
+        {
+            Debug.Log("Failed to extract rating from response.");
+        }
+    }
+    
     public void SpawnContinueButton()
     {
         _continueButton.gameObject.SetActive(true);
+        string reply = dialogueBox.text;
+        AddRatingToScore(reply);    
     }
     public void FinishTalking()
     {
