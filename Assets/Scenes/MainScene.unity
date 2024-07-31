@@ -354,6 +354,8 @@ MonoBehaviour:
   - {fileID: 8897567872410229930, guid: a576b09cd56b2d344890faaccd99d6fc, type: 3}
   - {fileID: 8897567872410229930, guid: 99f67a7ddee3af74481b7ea34e9b4f2e, type: 3}
   - {fileID: 8897567872410229930, guid: 35f2f540b5393f540b3dfdf918cd9534, type: 3}
+  - {fileID: 8897567872410229930, guid: 24ba168ef0b9d7e4795830adadd99ca9, type: 3}
+  - {fileID: 8897567872410229930, guid: 5d2e18e296bddde4388ca12300bed570, type: 3}
   serveDrinkButton: {fileID: 734706965}
 --- !u!114 &117851273
 MonoBehaviour:

@@ -446,16 +446,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6867664088970244853}
-  m_LocalRotation: {x: 0.000011832312, y: 0.00066554715, z: 0.0075605656, w: 0.9999712}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0026577606, w: 0.99999654}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5551947, y: 0.5551947, z: 0.5551947}
+  m_LocalScale: {x: 0.5597869, y: 0.6058693, z: 0.6058693}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4453702423253429109}
-  m_LocalEulerAnglesHint: {x: 0.001, y: 0.076, z: 0.866}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.305}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -39, y: -155}
+  m_AnchoredPosition: {x: -20, y: -153}
   m_SizeDelta: {x: 1300, y: 1300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &750581685853638963
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 03ed00dc04fb5d64988b7364f621df8a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cb2b0f9f85eb9d047aa17711d0d298a0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 8599600619313511615}
   - component: {fileID: 7934938965004642674}
   m_Layer: 0
-  m_Name: "G\xFCntherJauch"
+  m_Name: Bernd Diemer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -572,11 +572,10 @@ MonoBehaviour:
   stop: []
   playerName: user
   AIName: Visitor
-  prompt: "You will act like celebrity and TV G\xFCnther Jauch from the show who
-    is going to become a millionaire. You are bar visitor to my bar and have the
-    following script: First Message: you walk to the bar counter and ask for a drink.
-    You are free to add any details, about yourself, the occasion, your mood or whatever,
-    to help me as a bartender. "
+  prompt: 'You will act like the game designer and game director Bernd Diemer. You
+    are bar visitor to my bar and have the following script: First Message: you walk
+    to the bar counter and ask for a drink. You are free to add any details, about
+    yourself, the occasion, your mood or whatever, to help me as a bartender. '
   setNKeepToPrompt: 1
   chatTemplate: llama3 chat
   grammarString: 
@@ -611,7 +610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683854821969948965, guid: abbaba077400c514f9725c3127285cf5, type: 3}
       propertyPath: m_text
-      value: "G\xDCNTHER JAUCH"
+      value: BERND DIEMER
       objectReference: {fileID: 0}
     - target: {fileID: 5784662017763124786, guid: abbaba077400c514f9725c3127285cf5, type: 3}
       propertyPath: m_Pivot.x
