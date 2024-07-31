@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraToMousePointToBackground : MonoBehaviour
+public class CameraToMousePointToBackground : MonoBehaviour // FULLY AI SCRIPT
 {
     // Singleton instance
     public static CameraToMousePointToBackground Instance { get; private set; }

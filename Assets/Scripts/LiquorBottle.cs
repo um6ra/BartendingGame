@@ -12,6 +12,7 @@ public class LiquorBottle : MonoBehaviour
     public float maxRotationAngle = 90f;  // Maximum rotation angle to the right
     [SerializeField] Color startColor;
     [SerializeField] string startName;
+    [SerializeField] MeshRenderer bottleRenderer;
 
     // Drink Ingredient Name
     private string _ingredientName = "pineapple Juice";
@@ -116,6 +117,7 @@ public class LiquorBottle : MonoBehaviour
         var mainModule = liquidParticleSystem.main;
         mainModule.startColor = newColor;
         startColor = newColor;
+        bottleRenderer.materials[1].color = newColor;
     }
     
     public void SetNameField(string newName)
