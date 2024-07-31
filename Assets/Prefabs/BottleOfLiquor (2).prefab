@@ -5096,6 +5096,8 @@ MonoBehaviour:
   rotationSpeed: 100
   pourAngleThreshold: 60
   maxRotationAngle: 90
+  startColor: {r: 0.8584906, g: 0.74582, b: 0.22272164, a: 0}
+  startName: 
 --- !u!1 &7808038531794942131
 GameObject:
   m_ObjectHideFlags: 0
@@ -5161,7 +5163,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Pineapple Juice
+  m_text: '
 
 '
   m_isRightToLeft: 0

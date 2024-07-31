@@ -10,6 +10,8 @@ public class LiquorBottle : MonoBehaviour
     public float rotationSpeed = 100f;
     public float pourAngleThreshold = 30f;  // Angle threshold to start pouring
     public float maxRotationAngle = 90f;  // Maximum rotation angle to the right
+    [SerializeField] Color startColor;
+    [SerializeField] string startName;
 
     // Drink Ingredient Name
     private string _ingredientName = "pineapple Juice";
@@ -20,7 +22,6 @@ public class LiquorBottle : MonoBehaviour
     private bool isPouring = false;
     private Quaternion initialRotation;
     private float currentRotationAngle = 0f;
-    private Vector3 offset;
     private Camera mainCamera;
 
     private void Start()
@@ -28,9 +29,12 @@ public class LiquorBottle : MonoBehaviour
         // Store the initial rotation
         initialRotation = transform.rotation;
         // Move the bottle to the background position initially
-        transform.position = backgroundPosition;
+        transform.position  = new Vector3(transform.position.x, transform.position.y, backgroundPosition.z); ;
         // Get the main camera
         mainCamera = Camera.main;
+
+        SetParticleColor(startColor);
+        SetNameField(startName);
     }
 
     private void Update()
@@ -44,14 +48,12 @@ public class LiquorBottle : MonoBehaviour
         // Move to the foreground position
         transform.position = new Vector3(transform.position.x, transform.position.y, foregroundPosition.z);
         isInForeground = true;
-        // Calculate offset
-        //offset = transform.position - GetMouseWorldPos();
     }
 
     private void OnMouseUp()
     {
-        // Move back to the background position
-        transform.position = new Vector3(transform.position.x, transform.position.y, backgroundPosition.z); ;
+        Vector3 point = CameraToMousePointToBackground.Instance.GetMouseHitPoint();
+        transform.position = new Vector3(point.x, point.y, backgroundPosition.z);
         transform.rotation = initialRotation;  // Reset rotation
         isInForeground = false;
         isPouring = false;
@@ -97,7 +99,7 @@ public class LiquorBottle : MonoBehaviour
         if (isInForeground && Input.GetMouseButton(0))
         {
             // Move the bottle with the mouse
-            transform.position = GetMouseWorldPos() + offset;
+            transform.position = GetMouseWorldPos();
         }
     }
 
@@ -113,11 +115,13 @@ public class LiquorBottle : MonoBehaviour
     {
         var mainModule = liquidParticleSystem.main;
         mainModule.startColor = newColor;
+        startColor = newColor;
     }
     
     public void SetNameField(string newName)
     {
         _ingredientName = newName;
         input.text = _ingredientName;
+        startName = newName;
     }
 }
