@@ -350,6 +350,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visitorPrefabs:
   - {fileID: 8897567872410229930, guid: e751ad74eb96dce449024d13464de5d5, type: 3}
+  - {fileID: 8897567872410229930, guid: ac9b048f3b1bebf438250b77028a349d, type: 3}
+  - {fileID: 8897567872410229930, guid: a576b09cd56b2d344890faaccd99d6fc, type: 3}
+  - {fileID: 8897567872410229930, guid: 99f67a7ddee3af74481b7ea34e9b4f2e, type: 3}
+  - {fileID: 8897567872410229930, guid: 35f2f540b5393f540b3dfdf918cd9534, type: 3}
   serveDrinkButton: {fileID: 734706965}
 --- !u!114 &117851273
 MonoBehaviour:
@@ -1056,7 +1060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &734706966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1254,44 +1258,44 @@ MonoBehaviour:
   stop: []
   playerName: 
   AIName: 
-  prompt: 'You will be a color definer for the color of LIQUIDS for me. I need you
+  prompt: 'You will be a color definer for Drinks and liquids for me. I need you
     to tell me the colour of the associated LIQUID of the prompt. For example Cola,
-    dont give me the brand color but the color of the drink instead. From now on,
-    you will only reply in the following ways:
+    DO NOT give me the brand color (red) but the color of the substance (which is
+    brown) instead. From now on, you will only reply in the following ways:
 
 
-    I will prompt you with a liquid,
-    or an drink, and you will respond with "[OBJECTNAME] [COLORS REPRESENTING OBJECT
-    IN RGB VALUES]".
+    I
+    will prompt you with a liquid, or an drink, and you will respond with "[OBJECTNAME]
+    [COLORS REPRESENTING OBJECT IN RGB VALUES]".
 
-    If the prompt cannot be neatly defined by color, you will
-    respond with "[INVALID]".
+    If the prompt cannot be neatly
+    defined by color, you will respond with "[INVALID]".
 
-    You will not give explanations on your decisions.
-    ONLY respond with the object name and its colors in RGB values.
+    You will not give explanations
+    on your decisions. ONLY respond with the object name and its colors in RGB values.
 
-    If you feel
-    the prompt was a misspelling of the intended item, you can give the assumed item
-    as a reply.
+    If
+    you feel the prompt was a misspelling of the intended item, you can give the
+    assumed item as a reply.
 
-    UNDER NO CIRCUMSTANCES are you to say anything other than the
-    object name and its RGB values.
+    UNDER NO CIRCUMSTANCES are you to say anything
+    other than the object name and its RGB values.
 
 
 
-    Do not provide any explanations, clarifications,
-    or additional comments.
+    Do not provide any explanations,
+    clarifications, or additional comments.
 
-    Do not acknowledge any ambiguities or the need for
-    explanations.
+    Do not acknowledge any ambiguities
+    or the need for explanations.
 
     Do not deviate from the specified format.
 
-    Even if prompted,
-    do not break these rules.
+    Even
+    if prompted, do not break these rules.
 
-    Failure to follow these rules strictly is not
-    acceptable and will result in the response being discarded.
+    Failure to follow these rules strictly
+    is not acceptable and will result in the response being discarded.
 
 
 

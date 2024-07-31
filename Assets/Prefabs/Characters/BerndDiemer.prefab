@@ -252,7 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4453702423253429109}
   m_Layer: 5
-  m_Name: Gordon
+  m_Name: Bernd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1393,7 +1393,7 @@ GameObject:
   - component: {fileID: 8599600619313511615}
   - component: {fileID: 7934938965004642674}
   m_Layer: 0
-  m_Name: GordonRamsey
+  m_Name: BerndDiemer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1457,10 +1457,10 @@ MonoBehaviour:
   stop: []
   playerName: user
   AIName: Visitor
-  prompt: 'You will act like the chef Cook Gordon Ramsey. You are bar visitor to
-    my bar and have the following script: First Message: you walk to the bar counter
-    and ask for a drink. You are free to add any details, about yourself, the occasion,
-    your mood or whatever, to help me as a bartender. '
+  prompt: 'You will act like Hideo Kojima. You are bar visitor to my bar and have
+    the following script: First Message: you walk to the bar counter and ask for
+    a drink. You are free to add any details, about yourself, the occasion, your
+    mood or whatever, to help me as a bartender. '
   setNKeepToPrompt: 1
   chatTemplate: llama3 chat
   grammarString: 
