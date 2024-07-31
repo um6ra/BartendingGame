@@ -8,6 +8,7 @@ public class ScoreSystem : MonoBehaviour
     public static ScoreSystem Instance { get; private set; }
     
     public int score = 0;
+    public TMPro.TextMeshProUGUI scoreText;
     
     // display score 
     // get score from the other npc 
@@ -25,7 +26,11 @@ public class ScoreSystem : MonoBehaviour
         }
     }
 
-
+    public void AddScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        scoreText.text = "Tips: " + score + " $";
+    }
     // Start is called before the first frame update
     void Start()
     {

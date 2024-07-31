@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
+using TMPro;
 
 public class Glass : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Glass : MonoBehaviour
     public Transform liquidTransform;  // Transform of the liquid object
     public Renderer liquidRenderer;  // Renderer of the liquid object
     public Text liquidAmountText;  // UI Text to display the liquid amount (optional)
+    public TextMeshProUGUI liquidDetailsText; 
     public Vector3 liquidInitialScale;  // Initial scale of the liquid object
     public Vector3 liquidInitialPosition;  // Initial position of the liquid object
 
@@ -58,7 +60,8 @@ public class Glass : MonoBehaviour
             {
                 liquidAmountText.text = "Liquid Amount: " + totalLiquidAmount.ToString("F2");
             }
-
+            
+            DisplayLiquidAmounts();
             // Update the visual representation of the liquid
             UpdateLiquidVisuals();
         }
@@ -121,4 +124,49 @@ public class Glass : MonoBehaviour
 
         return strings;
     } 
+    
+    public void ResetGlass()
+    {
+        // Reset the total liquid amount
+        totalLiquidAmount = 0f;
+
+        // Clear the dictionary of liquid amounts
+        liquidAmounts.Clear();
+
+        // Reset the UI Text if assigned
+        if (liquidAmountText != null)
+        {
+            liquidAmountText.text = "Liquid Amount: 0.00";
+        }
+        
+        DisplayLiquidAmounts();
+        // Reset the visual representation of the liquid
+        UpdateLiquidVisuals();
+    }
+    
+    public void DisplayLiquidAmounts()
+    {
+        if (liquidDetailsText == null)
+        {
+            return;
+        }
+
+        if (liquidAmounts.Count == 0)
+        {
+            liquidDetailsText.text = "No liquids added.";
+            return;
+        }
+
+        System.Text.StringBuilder details = new System.Text.StringBuilder();
+        details.AppendLine("Drink Details:");
+
+        foreach (var entry in liquidAmounts)
+        {
+            float roundedAmount = Mathf.Round(entry.Value.Amount);
+            details.AppendLine($"{entry.Value.Name}: {roundedAmount} ml");
+        }
+
+        liquidDetailsText.text = details.ToString();
+    }
+
 }

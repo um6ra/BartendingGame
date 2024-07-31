@@ -26,8 +26,6 @@ public class Visitor : MonoBehaviour
     void Update()
     {
         
-     
-        
     }
     
     void DisplayReply(string reply)
@@ -40,9 +38,9 @@ public class Visitor : MonoBehaviour
     {
        // _canvas = GetComponentInChildren<Canvas>();
         _canvas.gameObject.SetActive(true);
-        llm.Chat("Hi Welcome To my Bar", DisplayReply);
+        llm.Chat("Hi Welcome To my Bar", DisplayReply, SpawnServeDrinkButton);
     }
-
+    
     /// <summary>
     /// Retrieves the ingredients from the current glass and feeds them as a prompt to the visitor LLM
     /// </summary>
@@ -89,8 +87,7 @@ public class Visitor : MonoBehaviour
         int rating = ExtractRating(ratingResponse);
         if (rating >= 0) // Ensure the rating is valid
         {
-            ScoreSystem.Instance.score += rating;
-            
+            ScoreSystem.Instance.AddScore(rating);
         }
         else
         {
@@ -103,6 +100,11 @@ public class Visitor : MonoBehaviour
         _continueButton.gameObject.SetActive(true);
         string reply = dialogueBox.text;
         AddRatingToScore(reply);    
+    }
+
+    public void SpawnServeDrinkButton()
+    {
+        VisitorManager.Instance.serveDrinkButton.SetActive(true);
     }
     public void FinishTalking()
     {

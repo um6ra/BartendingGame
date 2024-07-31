@@ -80,7 +80,7 @@ public class BottleDialogueManager : MonoBehaviour
     {
        LiquorBottle bottle = Instantiate(_liquorBottle);
         bottle.transform.position = new Vector3(4, 4, 4);
-       bottle.SetParticleColor(_objectColor);
+        bottle.SetParticleColor(_objectColor);
         bottle.SetNameField(_objectName);
         bottle.name = _objectName;
     }
@@ -89,7 +89,7 @@ public class BottleDialogueManager : MonoBehaviour
     {
         string msg = input.text;
         _ = llm.Chat(msg, HandleReply, CompleteReply);
-  }
+    }
 
     private string RemoveNonDigits(string input)
     {

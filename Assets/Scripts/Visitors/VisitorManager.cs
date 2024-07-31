@@ -6,6 +6,8 @@ public class VisitorManager : MonoBehaviour
     public static VisitorManager Instance { get; private set; }
     public List<GameObject> visitorPrefabs;
 
+    public GameObject serveDrinkButton;
+
     private GameObject currentVisitor;
     private GameObject nextVisitor;
 
