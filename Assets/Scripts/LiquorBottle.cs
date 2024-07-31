@@ -92,8 +92,21 @@ public class LiquorBottle : MonoBehaviour
             {
                 liquidParticleSystem.Stop();
             }
+
+            // Gradually rotate back to the original position
+            if (currentRotationAngle > 0)
+            {
+                float rotationAmount = rotationSpeed * Time.deltaTime;
+                if (currentRotationAngle - rotationAmount < 0)
+                {
+                    rotationAmount = currentRotationAngle;
+                }
+                transform.Rotate(Vector3.forward, rotationAmount);
+                currentRotationAngle -= rotationAmount;
+            }
         }
     }
+
 
     private void HandleDragging()
     {
