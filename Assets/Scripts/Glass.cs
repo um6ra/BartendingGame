@@ -111,10 +111,12 @@ public class Glass : MonoBehaviour
 
         string[] strings = new string[liquidAmounts.Count];
         int i = 0;
-
+    
         foreach (var entry in liquidAmounts)
         {
-            strings[i] = entry.Value.Name + ": " + entry.Value.Amount + "ml";
+            float roundedAmount = Mathf.Round(entry.Value.Amount);
+            strings[i] = entry.Value.Name + ": " + roundedAmount + "ml";
+            i++;
         }
 
         return strings;
